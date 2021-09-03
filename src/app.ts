@@ -3,7 +3,7 @@ import * as cors from 'cors'
 import * as morgan from 'morgan'
 import * as bodyParser from 'body-parser';
 import apiV1 from './api'
-
+import {MongoHelper} from './config/mongodb.config'
 
 class App {
     public express:express.Application;
@@ -26,7 +26,12 @@ class App {
     }
 
     private async connectToDB():Promise<void>{
-
+        const MONGO_DB_URI = ''
+         try {
+             await MongoHelper.connect(MONGO_DB_URI)
+         } catch (e) {
+             console.error(e);
+         }
     }
 
     private catchError():void{
