@@ -1,7 +1,8 @@
 import * as express from 'express'
-import cors from 'cors'
-import morgan from 'morgan'
-import bodyParser from 'body-parser';
+import * as cors from 'cors'
+import * as morgan from 'morgan'
+import * as bodyParser from 'body-parser';
+import apiV1 from './api'
 
 
 class App {
@@ -21,7 +22,7 @@ class App {
     }
 
     private setRoutes():void{
-
+        this.express.use("/api/v1",apiV1)
     }
 
     private async connectToDB():Promise<void>{
